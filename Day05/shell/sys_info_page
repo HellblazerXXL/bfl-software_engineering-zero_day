@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Program to output a system information page
+
+title="Sytem Information Report For $HOSTNAME"
+heading="A variable output"
+
+echo "<html>
+	<head>
+		<title>Sytem Information</title>
+	</head>
+	<body>
+		<p>$title</p>
+		<h1>$heading</h1>
+	</body>
+</html>"

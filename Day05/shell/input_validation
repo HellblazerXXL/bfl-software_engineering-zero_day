@@ -1,0 +1,51 @@
+#!/bin/bash
+
+validate () {
+echo "Please enter directory name"
+read directory
+while [ -z "$directory" ]; do
+	echo -e "\U274C Directory name can not be empty!"
+	read directory
+done
+
+while [ -n "$directory" -a `echo "$directory" | wc -c` \< 4 ]; do
+	echo -e "\U274C Directory name must be greater than 3 characters!"
+	read directory
+done
+
+if [ -n "$directory" -a `echo "$directory" | wc -c` \> 3 ]; then
+ 	mkdir ./"$directory"
+	echo -e "\U2705 "$directory" has been captured as your directory name"
+fi
+
+echo "Now enter filename"
+
+read filename
+
+while [ -z "$filename" ]; do
+	echo -e "\U274C File name can not be empty!"
+	read filename
+done
+
+while [ -n "$filename" -a `echo "$filename" | wc -c` \< 4 ]; do
+	echo -e "\U274C File name must be greater than 3 characters!"
+	read filename
+done
+
+
+while [[ "$filename" != *.sh ]]; do
+        echo -e "\U274C File name must carry a .sh extension!"
+	read filename
+done
+
+if [[ "$filename" == *.sh ]]; then
+	touch ./$directory/$filename
+        echo -e "\U2705 "$filename" has been captured as your file name"
+        echo "RESULTS:"
+        echo -e "\U2705 "$directory" directory created sucessfully!"
+        echo -e "\U2705 "$filename" file created in "$directory" directory sucessfully!"
+	echo -e "Welcome to "$filename" \U1F44D!" > ./$directory/$filename
+	cat ./$directory/$filename
+fi
+}
+validate
