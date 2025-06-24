@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -p "Enter a score: " GRADE
+
+if [ "$GRADE" -ge 70 -a "$GRADE" -le 100 ]; then
+	echo "Your grade is A"
+
+elif [ "$GRADE" -ge 60 -a "$GRADE" -le 69 ]; then
+        echo "Your grade is B"
+
+
+elif [ "$GRADE" -ge 50 -a "$GRADE" -le 59 ]; then
+        echo "Your grade is C"
+
+elif [ "$GRADE" -ge 40 -a "$GRADE" -le 49 ]; then
+        echo "Your grade is D"
+
+elif [ "$GRADE" -ge 30 -a "$GRADE" -le 39 ]; then
+        echo "Your grade is E"
+
+elif [ "$GRADE" -eq 0 -a "$GRADE" -le 29 ]; then
+        echo "Your grade is F"
+
+else 
+	echo "Invalid score! Enter a valid score"
+
+
+fi

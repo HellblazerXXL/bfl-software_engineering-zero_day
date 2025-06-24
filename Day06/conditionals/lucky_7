@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# declare variable for lucky number
+
+read -p "Please input your lucky number: " LUCKY_NUMBER
+
+if [ $LUCKY_NUMBER -eq 7 ]; then
+	echo "Free lucnch"
+elif [ $LUCKY_NUMBER -eq 5 ]; then
+	echo "Almost lucky"
+else
+       	echo "Not your lucky day"
+fi
