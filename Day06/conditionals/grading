@@ -18,7 +18,7 @@ elif [ "$GRADE" -ge 40 -a "$GRADE" -le 49 ]; then
 elif [ "$GRADE" -ge 30 -a "$GRADE" -le 39 ]; then
         echo "Your grade is E"
 
-elif [ "$GRADE" -eq 0 -a "$GRADE" -le 29 ]; then
+elif [ "$GRADE" -ge 0 -a "$GRADE" -le 29 ]; then
         echo "Your grade is F"
 
 else 

@@ -1,0 +1,60 @@
+#!/bin/bash
+echo -e "
+Welcome Misfit High School! \U1F603
+
+\U2139 Type \"-help\" to display available commands
+"
+grade_log () {
+	read -p "Enter a score: " GRADE
+	# if [[ "$GRADE" =~ ^-?[0-9]+$ ]]; then
+	if [[ "$GRADE" =~ ^-?[[:digit:]]+$ ]]; then
+		if [ "$GRADE" -ge 70 -a "$GRADE" -le 100 ]; then
+        		echo "Your grade is A"
+
+		elif [ "$GRADE" -ge 60 -a "$GRADE" -le 69 ]; then
+        		echo "Your grade is B"
+
+
+		elif [ "$GRADE" -ge 50 -a "$GRADE" -le 59 ]; then
+        		echo "Your grade is C"
+
+		elif [ "$GRADE" -ge 40 -a "$GRADE" -le 49 ]; then
+        		echo "Your grade is D"
+
+		elif [ "$GRADE" -ge 30 -a "$GRADE" -le 39 ]; then
+        		echo "Your grade is E"
+
+		elif [ "$GRADE" -ge 0 -a "$GRADE" -le 29 ]; then
+        		echo "Your grade is F"
+
+		else
+        		echo -e "\U274C Invalid score! Enter a valid score - \U1F4A1 Enter a score (0-100) to get grade evaluation
+			"
+
+
+		fi
+		grade_log
+
+
+
+	elif [[ "$GRADE" == -help ]]; then
+		echo -e "
+		Available commands:
+			-help : Show this help menu
+		 	exit : Terminate this program \U1F51A
+			\U1F4A1 Enter a score (0-100) to get grade evaluation
+			"
+		grade_log
+		
+	elif [[ "$GRADE" == exit ]]; then
+		echo -e "You have terminated the program. Goodbye!\U1F44B"
+		exit 
+
+	else
+		echo -e "\U274c "$GRADE" is not a digit.
+		\U2139 Type \"-help\" to display available commands
+		"
+		grade_log
+fi
+}
+grade_log
