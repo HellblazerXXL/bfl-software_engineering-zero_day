@@ -13,6 +13,9 @@ exit: To terminate AV program
 "
 SHOULD_EXECUTE=true
 ENGINE_IS_ON=false
+DRIVING=false
+REVERSE=false
+PARKING=true
 
 while "$SHOULD_EXECUTE";
 do
@@ -20,7 +23,7 @@ do
 
 	if [[ "$ACTION" == start && "$ENGINE_IS_ON" == false ]];
 	then
-		echo "Engine is starting..."
+		echo "AV engine is starting..."
 		sleep 1
 		echo "4"
 		sleep 1
@@ -31,11 +34,55 @@ do
 		echo "1"
 		sleep 1
 		echo "Engine has started!"
+		echo "
+		Select D to drive vehicle
+		
+		Select P to park vehicle
+		
+		Select R to reverse vehicle"
 		ENGINE_IS_ON=true
-	
-	elif [[ "$ACTION" == stop && $ENGINE_IS_ON == true ]];
+		
+
+	elif [[ "$ACTION" == D && "$ENGINE_IS_ON" == true && "$DRIVING" == false ]];
 	then
-		echo "Engine is stopping..."
+		echo "Initiating drive mode"
+		sleep 1
+		echo -e "Drive mode initiated \U1F697"
+		sleep 1
+		echo -e "Driving............................................ \U1F697"
+		sleep 1
+		echo -e "Drving............................................................................................................... \U1F697"
+		sleep 1
+		echo -e "Driving................................................................................................................................................................ \U1F697"
+		DRIVING=true
+
+	elif [[ "$ACTION" == D && "$DRIVING" == true && "$ENGINE_IS_ON" == true ]];
+        then
+                echo "The AV is already in drive mode!"
+
+
+	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == true && "$REVERSE" == false ]];
+	then
+		echo "Initiating reverse"
+		sleep 1
+		echo -e "Reverse mode initiated"
+		sleep 1
+		echo -e "Reversing.............................................................................................................................................................. \U1F697"
+		sleep 1
+		echo -e "Reversing............................................................................................................. \U1F697"
+		sleep 1
+		echo -e "Reversing............................................. \U1F697"
+		REVERSE=true
+
+	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == true && "$REVERSE" == true ]];
+	then
+		echo "The AV is already in reverse mode"
+
+
+	
+	elif [[ "$ACTION" == stop && "$ENGINE_IS_ON" == true ]];
+	then
+		echo "Stopping AV engine..."
       		sleep 1
       		echo "4"
       		sleep 1
@@ -48,13 +95,23 @@ do
       		echo "Engine has stopped!"
 		ENGINE_IS_ON=false
 
-	elif [[ "$ACTION" == start && $ENGINE_IS_ON == true ]];
+
+	elif [[ "$ACTION" == start && "$ENGINE_IS_ON" == true ]];
 	then
 		echo "Engine is already on"
 
 	elif [[ "$ACTION" == stop && "$ENGINE_IS_ON" == false ]];
 	then
 		echo "Engine is already off!"
+
+	elif [[ "$ACTION" == P && "$ENGINE_IS_ON" == false ]]
+	then
+		echo "Initiating parking"
+		sleep 1
+		echo "Parking..."
+		sleep 1
+		echo "The AV is parked"
+
 
 	elif [[ "$ACTION" == -help ]];
 	then
@@ -72,6 +129,7 @@ do
 
 	elif [[ "$ACTION" == exit ]];
 	then
+		echo "The AV program has been terminated"
 		break
 
 	else
