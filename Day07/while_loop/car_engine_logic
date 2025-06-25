@@ -1,0 +1,82 @@
+#!/bin/bash
+
+echo "Welcome to AV(Autonomous Vehichle)!
+Available commands
+
+start: To start engine
+
+stop: To stop engine
+
+exit: To terminate AV program
+
+-help: To display available commands
+"
+SHOULD_EXECUTE=true
+ENGINE_IS_ON=false
+
+while "$SHOULD_EXECUTE";
+do
+	read -p "Enter vehicle command: " ACTION
+
+	if [[ "$ACTION" == start && "$ENGINE_IS_ON" == false ]];
+	then
+		echo "Engine is starting..."
+		sleep 1
+		echo "4"
+		sleep 1
+		echo "3"
+		sleep 1
+		echo "2"
+		sleep 1
+		echo "1"
+		sleep 1
+		echo "Engine has started!"
+		ENGINE_IS_ON=true
+	
+	elif [[ "$ACTION" == stop && $ENGINE_IS_ON == true ]];
+	then
+		echo "Engine is stopping..."
+      		sleep 1
+      		echo "4"
+      		sleep 1
+      		echo "3"
+      		sleep 1
+      		echo "2"
+      		sleep 1
+      		echo "1"
+      		sleep 1
+      		echo "Engine has stopped!"
+		ENGINE_IS_ON=false
+
+	elif [[ "$ACTION" == start && $ENGINE_IS_ON == true ]];
+	then
+		echo "Engine is already on"
+
+	elif [[ "$ACTION" == stop && "$ENGINE_IS_ON" == false ]];
+	then
+		echo "Engine is already off!"
+
+	elif [[ "$ACTION" == -help ]];
+	then
+		echo "Welcome to AV(Autonomous Vehichle)!
+		Available commands
+
+		start: To start engine
+
+		stop: To stop engine
+
+		exit: To terminate AV program
+
+		-help: To display available commands
+		"
+
+	elif [[ "$ACTION" == exit ]];
+	then
+		break
+
+	else
+		echo "Invalid Command!"
+	fi
+
+
+done

@@ -1,0 +1,53 @@
+#!/bin/bash
+SHOULD_EXECUTE=true
+while $SHOULD_EXECUTE; do
+	echo "Something nice"
+	
+	SHOULD_EXECUTE=false
+done
+
+echo "--------------------------------------------------"
+
+COUNT=0
+
+while [[ $COUNT -lt 5 ]];
+do
+	echo $COUNT
+	COUNT=$((COUNT+1))
+done
+
+
+echo "------------------------------------------------"
+
+
+COUNT=1
+
+while [[ $COUNT -le 100 ]];
+do
+        echo $COUNT
+        COUNT=$((COUNT+1))
+done
+
+echo "---------------------------------------------"
+
+COUNT=100
+
+while [[ $COUNT -ge 1 ]];
+do
+        echo $COUNT
+        COUNT=$((COUNT-1))
+done
+
+
+echo"---------------------------------------------"
+
+
+COUNT=100
+
+while [[ $COUNT -ge 1 ]];
+do
+        echo "Number $COUNT"
+        COUNT=$((COUNT-1))
+done
+
+
