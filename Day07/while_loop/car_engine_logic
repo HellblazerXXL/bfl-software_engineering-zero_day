@@ -60,6 +60,22 @@ do
         then
                 echo "The AV is already in drive mode!"
 
+	elif [[ "$ACTION" == D && "$DRIVING" == false && "$ENGINE_IS_ON" == false ]];
+        then
+                echo -e "\U2757 Start the AV engine to initiate gears"
+		echo "
+                Available commands
+
+                start: To start engine
+
+                stop: To stop engine
+
+                exit: To terminate AV program
+
+                -help: To display available commands
+                "
+
+
 
 	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == true && "$REVERSE" == false ]];
 	then
@@ -74,10 +90,55 @@ do
 		echo -e "Reversing............................................. \U1F697"
 		REVERSE=true
 
-	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == true && "$REVERSE" == true ]];
-	then
-		echo "The AV is already in reverse mode"
 
+	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == true && "$REVERSE" == true ]]
+        then
+                echo "The AV is already in parking mode!"
+
+
+	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == false && "$REVERSE" == false ]];
+	then
+		echo -e "\U2757 Start the AV engine to initiate gears"
+		echo "
+                Available commands
+
+                start: To start engine
+
+                stop: To stop engine
+
+                exit: To terminate AV program
+
+                -help: To display available commands
+                "
+
+
+	elif [[ "$ACTION" == P && "$ENGINE_IS_ON" == true && "$PARKING" == true ]]
+        then
+                echo "Initiating parking"
+                sleep 1
+                echo "Parking..."
+                sleep 1
+                echo "The AV is parked"
+		PARKING=false
+
+	elif [[ "$ACTION" == P && "$ENGINE_IS_ON" == true && "$PARKING" == false ]]
+	then 
+		echo "The AV is already in parking mode!"
+
+	elif [[ "$ACTION" == P && "$ENGINE_IS_ON" == false && "$PARKING" == true ]]
+        then
+                echo -e "\U2757 Start the AV engine to initiate gears"
+		echo "
+                Available commands
+
+                start: To start engine
+
+                stop: To stop engine
+
+                exit: To terminate AV program
+
+                -help: To display available commands
+                "
 
 	
 	elif [[ "$ACTION" == stop && "$ENGINE_IS_ON" == true ]];
@@ -104,14 +165,6 @@ do
 	then
 		echo "Engine is already off!"
 
-	elif [[ "$ACTION" == P && "$ENGINE_IS_ON" == false ]]
-	then
-		echo "Initiating parking"
-		sleep 1
-		echo "Parking..."
-		sleep 1
-		echo "The AV is parked"
-
 
 	elif [[ "$ACTION" == -help ]];
 	then
@@ -133,7 +186,20 @@ do
 		break
 
 	else
-		echo "Invalid Command!"
+		echo -e "\U274CInvalid Command!
+		"
+		echo "
+                Available commands
+
+                start: To start engine
+
+                stop: To stop engine
+
+                exit: To terminate AV program
+
+                -help: To display available commands
+                "
+
 	fi
 
 
