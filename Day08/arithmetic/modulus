@@ -1,0 +1,18 @@
+#!/bin/bash
+number=0
+sum_even=0
+sum_odd=0
+ for (( i=1;  i <= 10; i++ )); 
+ do
+	 if (( $i % 2 == 0 ));
+	then
+		echo "$i = Even"
+		sum_even=$((sum_even+$i))
+		
+	else
+		echo "$i = Odd"
+		sum_odd=$((sum_odd+$i))
+	fi
+done
+echo "Total even sum = $sum_even"
+echo "Total odd sum = $sum_odd"
