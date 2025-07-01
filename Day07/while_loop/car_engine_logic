@@ -55,6 +55,8 @@ do
 		sleep 1
 		echo -e "Driving................................................................................................................................................................ \U1F697"
 		DRIVING=true
+		REVERSE=false
+		PARKING=true
 
 	elif [[ "$ACTION" == D && "$DRIVING" == true && "$ENGINE_IS_ON" == true ]];
         then
@@ -89,11 +91,13 @@ do
 		sleep 1
 		echo -e "Reversing............................................. \U1F697"
 		REVERSE=true
+		DRIVING=false
+		PARKING=true
 
 
 	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == true && "$REVERSE" == true ]]
         then
-                echo "The AV is already in parking mode!"
+                echo "The AV is already in reverse mode!"
 
 
 	elif [[ "$ACTION" == R && "$ENGINE_IS_ON" == false && "$REVERSE" == false ]];
@@ -120,6 +124,8 @@ do
                 sleep 1
                 echo "The AV is parked"
 		PARKING=false
+		DRIVING=false
+		REVERSE=false
 
 	elif [[ "$ACTION" == P && "$ENGINE_IS_ON" == true && "$PARKING" == false ]]
 	then 
